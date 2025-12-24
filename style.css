@@ -1,0 +1,352 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
+}
+
+/* Левая часть - форма */
+.add-form-container {
+    width: 25%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-form h2 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* Правая часть - галерея */
+.gallery-container {
+    width: 75%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Вкладки категорий */
+.categories-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4e4caf;
+}
+
+.tab {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.tab:hover {
+    background-color: #d0d0d0;
+}
+
+.tab.active {
+    background-color: #4e4caf;
+    color: white;
+}
+
+input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    width: 100%;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #4e4caf;
+    outline: none;
+}
+
+input.error {
+    border-color: #ff4444;
+    background-color: #ffeeee;
+}
+
+/* Баннер ошибки */
+.error-banner {
+    background-color: #ff4444;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+button {
+    background-color: #4e4caf;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 20px;
+    margin: 1px 1px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #3a3990;
+    transform: translateY(-2px);
+}
+
+button.secondary {
+    background-color: #6c757d;
+}
+
+button.secondary:hover {
+    background-color: #545b62;
+}
+
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 35px;
+    justify-items: center;
+}
+
+.card.favourite {
+    background-color: #ff005dd2;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+    word-break: break-word;
+}
+
+.card p {
+    margin: 0 0 15px 0;
+    color: #666;
+    font-size: 0.9rem;
+    word-break: break-word;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.del-btn {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: auto;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.del-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Контейнер счетчика */
+.counter-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.counter-container h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal:hover {
+    color: #ff4444;
+}
+
+#modal-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark-theme .add-form-container {
+    background-color: #2a2a2a;
+}
+
+.dark-theme input {
+    background-color: #404040;
+    color: white;
+    border-color: #555;
+}
+
+.dark-theme .card {
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.dark-theme .card h2 {
+    color: white;
+}
+
+.dark-theme .card p {
+    color: #ccc;
+}
+
+.dark-theme .add-form h2 {
+    color: white;
+}
+
+.dark-theme .counter-container {
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.dark-theme .modal-content {
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.dark-theme .close-modal {
+    color: white;
+}
+
+.dark-theme .categories-tabs {
+    border-bottom-color: #888;
+}
+
+.dark-theme .tab {
+    background-color: #404040;
+    color: white;
+}
+
+.dark-theme .tab:hover {
+    background-color: #505050;
+}
+
+.dark-theme .tab.active {
+    background-color: #4e4caf;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .add-form-container,
+    .gallery-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .add-form-container {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
