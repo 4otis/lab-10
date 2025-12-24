@@ -18,6 +18,13 @@ const modalImage = document.getElementById('modal-image');
 let categories = [];
 let artifacts = [];
 
+// Массив с изображениями по умолчанию
+const defaultImages = [
+    'images/artifact1.jpg',
+    'images/artifact2.jpg',
+    'images/artifact3.jpg'
+];
+
 function init() {
     updateCounter();
     addBtn.addEventListener('click', addArtifact);
@@ -33,18 +40,25 @@ function init() {
 }
 
 function addArtifact() {
-    if (!titleInput.value.trim() || !categoryInput.value.trim() || !imageInput.value.trim()) {
+    if (!titleInput.value.trim() || !categoryInput.value.trim()) {
         errorBanner.classList.remove('hidden');
         return;
     }
 
     errorBanner.classList.add('hidden');
 
+    let imageUrl = imageInput.value.trim();
+    if (!imageUrl) {
+        // Выбираем случайное изображение из defaultImages
+        const randomIndex = Math.floor(Math.random() * defaultImages.length);
+        imageUrl = defaultImages[randomIndex];
+    }
+
     const artifact = {
         id: Date.now(),
         title: titleInput.value.trim(),
         category: categoryInput.value.trim(),
-        image: imageInput.value.trim(),
+        image: imageUrl,
         isFavourite: false,
         createdAt: new Date().toLocaleString()
     };
@@ -79,6 +93,7 @@ function createCard(artifact) {
     const image = document.createElement('img');
     image.src = artifact.image;
     image.alt = artifact.title;
+    image.loading = "lazy"; // Добавляем lazy loading
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "Удалить";
