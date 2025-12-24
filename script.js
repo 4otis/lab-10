@@ -20,9 +20,9 @@ let artifacts = [];
 
 // Массив с изображениями по умолчанию
 const defaultImages = [
-    'images/artifact1.jpg',
-    'images/artifact2.jpg',
-    'images/artifact3.jpg'
+    'images/artifact1.webp',
+    'images/artifact2.webp',
+    'images/artifact3.webp'
 ];
 
 function init() {
